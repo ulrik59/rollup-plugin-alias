@@ -3,10 +3,10 @@ import fs from 'fs';
 
 // Helper functions
 const noop = () => null;
-const startsWith = (needle, haystack) => ! haystack.indexOf(needle);
+const startsWith = (needle, haystack) => !haystack.indexOf(needle);
 const endsWith = (needle, haystack) => haystack.slice(-needle.length) === needle;
 const isFilePath = id => /^\.?\//.test(id);
-const exists = uri => {
+const exists = (uri) => {
   try {
     return fs.statSync(uri).isFile();
   } catch (e) {

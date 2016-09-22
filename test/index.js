@@ -3,24 +3,24 @@ import path from 'path';
 import { rollup } from 'rollup';
 import alias from '../dist/rollup-plugin-alias';
 
-test(t => {
+test((t) => {
   t.is(typeof alias, 'function');
 });
 
-test(t => {
+test((t) => {
   const result = alias();
   t.is(typeof result, 'object');
   t.is(typeof result.resolveId, 'function');
 });
 
-test(t => {
+test((t) => {
   const result = alias({});
   t.is(typeof result, 'object');
   t.is(typeof result.resolveId, 'function');
 });
 
 // Simple aliasing
-test(t => {
+test((t) => {
   const result = alias({
     foo: 'bar',
     pony: 'paradise',
@@ -34,7 +34,7 @@ test(t => {
 });
 
 // Local aliasing
-test(t => {
+test((t) => {
   const result = alias({
     foo: './bar',
     pony: './par/a/di/se',
@@ -52,7 +52,7 @@ test(t => {
 });
 
 // Absolute local aliasing
-test(t => {
+test((t) => {
   const result = alias({
     foo: '/bar',
     pony: '/par/a/di/se.js',
@@ -70,7 +70,7 @@ test(t => {
 });
 
 // Test for the resolve property
-test(t => {
+test((t) => {
   const result = alias({
     ember: './folder/hipster',
     resolve: ['.js', '.jsx'],
@@ -81,7 +81,7 @@ test(t => {
   t.is(resolved, path.resolve(__dirname, './files/folder/hipster.jsx'));
 });
 
-test(t => {
+test((t) => {
   const result = alias({
     resolve: 'i/am/a/file',
   });
@@ -91,7 +91,7 @@ test(t => {
   t.is(resolved, 'i/am/a/file');
 });
 
-test(t => {
+test((t) => {
   const result = alias({
     resolve: './i/am/a/local/file',
   });
@@ -111,7 +111,7 @@ test(t =>
       numberFolder: './folder',
       './numberFolder': './folder',
     })],
-  }).then(stats => {
+  }).then((stats) => {
     t.is(stats.modules[0].id.endsWith('/files/nonAliased.js'), true);
     t.is(stats.modules[1].id.endsWith('/files/aliasMe.js'), true);
     t.is(stats.modules[2].id.endsWith('/files/localAliasMe.js'), true);

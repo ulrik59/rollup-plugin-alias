@@ -1,0 +1,6 @@
+extends: airbnb/base
+rules:
+  prefer-template: 0
+  import/no-extraneous-dependencies: 0
+  import/no-unresolved: 0
+  import/imports-first: 0
